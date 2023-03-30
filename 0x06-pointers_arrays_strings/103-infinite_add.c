@@ -37,43 +37,42 @@ void rev_string(char *n)
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-    int carry = 0;
-    int len1 = strlen(n1);
-    int len2 = strlen(n2);
-    int i = len1 - 1;
-    int j = len2 - 1;
-    int k = 0;
+	int overflow = 0, i = 0, j = 0, digits = 0;
+	int val1 = 0, val2 = 0, temp_tot = 0;
 
-    // Iterate over both strings from right to left and add digits
-    while (i >= 0 || j >= 0 || carry != 0) {
-        int sum = carry;
-        if (i >= 0) {
-            sum += n1[i] - '0';
-            i--;
-        }
-        if (j >= 0) {
-            sum += n2[j] - '0';
-            j--;
-        }
-        if (k >= size_r) {
-            // Result can't be stored in r, return 0
-            return 0;
-        }
-        carry = sum / 10;
-        r[k] = (sum % 10) + '0';
-        k++;
-    }
-
-    // Reverse the result string
-    for (int i = 0; i < k / 2; i++) {
-        char tmp = r[i];
-        r[i] = r[k - i - 1];
-        r[k - i - 1] = tmp;
-    }
-
-    // Add null terminator
-    r[k] = '\0';
-
-    // Return pointer to result string
-    return r;
+	while (*(n1 + i) != '\0')
+		i++;
+	while (*(n2 + j) != '\0')
+		j++;
+	i--;
+	j--;
+	if (j >= size_r || i >= size_r)
+		return (0);
+	while (j >= 0 || i >= 0 || overflow == 1)
+	{
+		if (i < 0)
+			val1 = 0;
+		else
+			val1 = *(n1 + i) - '0';
+		if (j < 0)
+			val2 = 0;
+		else
+			val2 = *(n2 + j) - '0';
+		temp_tot = val1 + val2 + overflow;
+		if (temp_tot >= 10)
+			overflow = 1;
+		else
+			overflow = 0;
+		if (digits >= (size_r - 1))
+			return (0);
+		*(r + digits) = (temp_tot % 10) + '0';
+		digits++;
+		j--;
+		i--;
+	}
+	if (digits == size_r)
+		return (0);
+	*(r + digits) = '\0';
+	rev_string(r);
+	return (r);
 }
