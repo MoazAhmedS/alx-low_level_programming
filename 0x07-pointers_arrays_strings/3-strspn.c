@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * *_strspn - prefix substring
- * @s: string 
- * @accept: string to match
+ * *_strspn - length of a prefix substring
+ * @s: string to evaluate
+ * @accept: string to match in s
  *
- * Return: num of bytes
+ * Return: the number of bytes
  */
 unsigned int _strspn(char *s, char *accept)
 {
