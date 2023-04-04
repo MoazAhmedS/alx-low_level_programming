@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * *_strspn -prefix substring
+ * *_strspn - prefix substring
  * @s: string
  * @accept: string 
  *
