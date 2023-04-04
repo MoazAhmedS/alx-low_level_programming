@@ -1,8 +1,10 @@
 #include "main.h"
 
 /**
- * memset - prints buffer in hexa
- *
+ * *_memset - prints buffer in hexa
+ * @s: memory
+ * @b: char to use
+ * @n: lenght
  * Return: array
  */
 char *_memset(char *s, char b, unsigned int n)
