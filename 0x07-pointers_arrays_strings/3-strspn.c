@@ -2,8 +2,8 @@
 
 /**
  * *_strspn - prefix substring
- * @s: string
- * @accept: string 
+ * @s: string 
+ * @accept: string to match
  *
  * Return: num of bytes
  */
